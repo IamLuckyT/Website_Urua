@@ -16,7 +16,7 @@ function showError($error) {
 }
 
 function isActiveForm($formName, $activeForm) {
-  return $formNmae === $activeForm ? 'active' : '';
+  return $formName === $activeForm ? 'active' : '';
 }
 
 ?>

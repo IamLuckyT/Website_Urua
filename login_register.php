@@ -29,16 +29,17 @@ if (isset($_POST['register'])) {
     exit();
 }
 
-if (isset($_POST['register'])) {
+if (isset($_POST['login'])) {
     $idnumber = $_POST['idnumber'];
     $password = $_POST['password'];
 
     $result = $conn->query("SELECT * FROM users WHERE idnumber = '$idnumber'")
-    if ($checkEmail->num_rows > 0){
+    if ($checkIDnumber->num_rows > 0){
         $user = $result->Fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['name'] = $user['name'];
             $_SESSION['email'] = $user['email'];
+            
             if ($user['role'] === 'admin') {
                 header("Location: admin_page.php");
             }else {
