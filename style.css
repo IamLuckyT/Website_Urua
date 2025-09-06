@@ -37,8 +37,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-input {
-  select {
+input, select {
     width: 100%;
     padding: 12px;
     background: #eee;
@@ -49,7 +48,7 @@ input {
     color: #333;
     margin-bottom: 20px;
   }
-}
+
 
 button {
   width: 100%;
