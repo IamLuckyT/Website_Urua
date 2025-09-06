@@ -36,7 +36,7 @@ function isActiveForm($formName, $activeForm) {
             <input  type="idnumber" name="idnumber" placeholder="IDnumber" required>
             <input  type="password" name="password" placeholder="Password" required>
             <button type="submit" name="login">Login</button>
-            <p class="small-text">Don’t have an account? <a href="#" onclick="showForm('register-form')">Register</a>  </p>
+            <p>Don’t have an account? <a href="#" onclick="showForm('register-form')">Register</a>  </p>
       </div>
 
       <div class="form-box <?= isActiveForm('register', $activeForm); ?>" id="register-form"> 
