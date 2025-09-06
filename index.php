@@ -12,7 +12,7 @@ $activeForm = $_SESSION['active_form'] ?? 'login';
 session_unset();
 
 function showError($error) {
-  return !empty($error) ? "<p class='error-meesage'>$error</p>" : '';
+  return !empty($error) ? "<p class='error-message'>$error</p>" : '';
 }
 
 function isActiveForm($formName, $activeForm) {
@@ -44,16 +44,17 @@ function isActiveForm($formName, $activeForm) {
           <h2>Register</h2>
           <?= showError($errors['register']); ?>
             <input  type="text" name="name" placeholder="Name" required>
-            <input  type="idnumber" name="idnumber" placeholder="IDnumber" required>
+            <input  type="text" name="idnumber" placeholder="IDnumber" required>
             <input  type="email" name="email" placeholder="Email" required>
             <input  type="password" name="password" placeholder="Password" required> 
-            <select name="Type Of Stakeholder" required>
+            <select name="Stakeholder_Type" required>
               <option value="">--Select Role--</option>
               <option value="user">User</option>
               <option value="admin">Admin</option>
             </select>           
             <button type="submit" name="register">Register</button>
             <p>Already have an account? <a href="#" onclick="showForm('login-form')">Login</a>  </p>
+        </form>
       </div>
       <script src="script.js"></script>
   </body>
