@@ -4,7 +4,7 @@ session_start();
 
 $errors = [
   'login' => $_SESSION['login_error'] ??'',
-  'login' => $_SESSION['register_error'] ??''
+  'register' => $_SESSION['register_error'] ??''
 ];
 
 $activeForm = $_SESSION['active_form'] ?? 'login';
