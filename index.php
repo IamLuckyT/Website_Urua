@@ -44,7 +44,7 @@ function isActiveForm($formName, $activeForm) {
           <h2>Register</h2>
           <?= showError($errors['register']); ?>
             <input  type="text" name="name" placeholder="Name" required>
-            <input  type="text" name="idnumber" placeholder="IDnumber" required>
+            <input  type="text" name="idnumber" placeholder="ID Number" required>
             <input  type="email" name="email" placeholder="Email" required>
             <input  type="password" name="password" placeholder="Password" required> 
             <select name="role" required>
