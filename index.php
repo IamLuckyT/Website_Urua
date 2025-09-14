@@ -33,7 +33,7 @@ function isActiveForm($formName, $activeForm) {
         <form action="login_register.php" method="post"> <!-- php file used to login --> 
           <h2>Login</h2>
           <?= showError($errors['login']); ?>
-            <input  type="idnumber" name="idnumber" placeholder="IDnumber" required>
+            <input  type="idnumber" name="idnumber" placeholder="ID Number" required>
             <input  type="password" name="password" placeholder="Password" required>
             <button type="submit" name="login">Login</button>
             <p>Don’t have an account? <a href="#" onclick="showForm('register-form')">Register</a>  </p>
