@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+session_start();                        //Starts php session to store data
 require_once 'config.php';
 
 if (isset($_POST['register'])) {
@@ -11,18 +11,18 @@ if (isset($_POST['register'])) {
     $role = $_POST['role'];
 
     //Code I modified
-    $checkIDnumber = $conn->query("SELECT idnumber FROM users WHERE idnumber = '$idnumber'")
+    $checkIDnumber = $conn->query("SELECT idnumber FROM users WHERE idnumber = '$idnumber'");
     if ($checkIDnumber->num_rows > 0){
-        $_SESSION['register_error'] = 'IDNUMBER is already registered!'
-        $_SESSION['active_form'] = 'register'
+        $_SESSION['register_error'] = 'IDNUMBER is already registered!';
+        $_SESSION['active_form'] = 'register';
     }else {
         $conn->query("INSERT INTO users (name, idnumber, email, password, role) VALUES ('$name','$idnumber', '$email', '$password', '$role')");
     }
     /* Actual code from the tutorial
-    $checkEmail = $conn->query("SELECT email FROM users WHERE email = '$email'")
+    $checkEmail = $conn->query("SELECT email FROM users WHERE email = '$email'");
     if ($checkEmail->num_rows > 0){
-        $_SESSION['register_error'] = 'Email is already registered!'
-        $_SESSION['active_form'] = 'register'
+        $_SESSION['register_error'] = 'Email is already registered!';
+        $_SESSION['active_form'] = 'register';
     }else {
         $conn->query("INSERT INTO users (name, idnumber, email, password, role) VALUES ('$name','$idnumber', '$email', '$password', '$role')");
     }
