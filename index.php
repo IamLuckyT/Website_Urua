@@ -47,7 +47,7 @@ function isActiveForm($formName, $activeForm) {
             <input  type="text" name="idnumber" placeholder="IDnumber" required>
             <input  type="email" name="email" placeholder="Email" required>
             <input  type="password" name="password" placeholder="Password" required> 
-            <select name="Stakeholder_Type" required>
+            <select name="role" required>
               <option value="">--Select Role--</option>
               <option value="user">User</option>
               <option value="admin">Admin</option>
