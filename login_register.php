@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
             exit();
         }
     }
-    $_SESSION['login_error'] = $user['incorrect idnumber or password'];
+    $_SESSION['login_error'] = 'incorrect idnumber or password';
     $_SESSION['active_form'] = 'login';
     header("Location: index.php");
     exit();
