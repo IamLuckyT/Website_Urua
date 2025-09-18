@@ -1,6 +1,6 @@
 <h1>Registration and Login Management System</h1>
 The registration and login system allows users to register and login into a system. The site contains two roles(User and Admin) each role has an external web page that will take the user 
-to a page based on their role, the data is then stored on my local system which can be accessed using the link http://localhost/Website_Urua/index.php
+to a page based on their role, the data is then stored on my local system(local host), the website can be accessed using the link http://localhost/Website_Urua/index.php
 <h2>Languages and System used</h2>
 <ul>
   <li>HTML: For basic web preview which is the landing page when the user visits the page.</li>
