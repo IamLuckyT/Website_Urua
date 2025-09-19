@@ -8,5 +8,5 @@ to a page based on their role, the data is then stored on my local system(local 
   <li>Javascript: For better usability and scaling.</li>
   <li>PHP: To allow easy access of storing and retreaval of data which is stored on the control pannel. </li>
   <li>MySQL: Used to create tables for storing data in the created database which allows the user to register and login into the system</li>
-  <li>XAMPP Control pannel: The control pannel helps connect the database and as the database manager I can be able to view, manage and manipulate data within the system.</li>
+  <li>php-myadmin: Database management system that allows me to view, manage and manipulate data within the system.</li>
 </ul>
