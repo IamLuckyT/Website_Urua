@@ -10,6 +10,34 @@ if (isset($_POST['register'])) {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
+    // Basic validation example (you can expand this)
+    if (empty($name) || empty($idnumber) || empty($email) || empty($password_raw) || empty($role)) {
+        $_SESSION['register_error'] = 'Please fill in all fields.';
+        $_SESSION['active_form'] = 'register';
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['register_error'] = 'Invalid email format.';
+        $_SESSION['active_form'] = 'register';
+        header("Location: index.php");
+        exit();
+    }
+
+    // Check if ID number already exists
+    $stmt = $conn->prepare("SELECT idnumber FROM users WHERE idnumber = ?");
+    $stmt->bind_param("s", $idnumber);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['register_error'] = 'ID Number is already registered!';
+        $_SESSION['active_form'] = 'register';
+        header("Location: index.php");
+        exit();
+    }      header("Location: index.php");
+        exit();
+  
+    /*
     //Code I modified
     $checkIDnumber = $conn->query("SELECT idnumber FROM users WHERE idnumber = '$idnumber'");
     if ($checkIDnumber->num_rows > 0){
@@ -18,6 +46,7 @@ if (isset($_POST['register'])) {
     }else {
         $conn->query("INSERT INTO users (name, idnumber, email, password, role) VALUES ('$name','$idnumber', '$email', '$password', '$role')");
     }
+    */
     /* Actual code from the tutorial
     $checkEmail = $conn->query("SELECT email FROM users WHERE email = '$email'");
     if ($checkEmail->num_rows > 0){
@@ -56,5 +85,6 @@ if (isset($_POST['login'])) {
     header("Location: index.php");
     exit();
 }
+
 
 ?>
