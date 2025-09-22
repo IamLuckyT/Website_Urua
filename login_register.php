@@ -34,7 +34,8 @@ if (isset($_POST['register'])) {
         $_SESSION['active_form'] = 'register';
         header("Location: index.php");
         exit();
-    }      header("Location: index.php");
+    }      
+    header("Location: index.php");
         exit();
   
     /*
@@ -56,6 +57,21 @@ if (isset($_POST['register'])) {
         $conn->query("INSERT INTO users (name, idnumber, email, password, role) VALUES ('$name','$idnumber', '$email', '$password', '$role')");
     }
     */
+    // Hash the password
+    $password = password_hash($password_raw, PASSWORD_DEFAULT);
+
+    // Insert the new user
+    $stmt = $conn->prepare("INSERT INTO users (name, idnumber, email, password, role) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $name, $idnumber, $email, $password, $role);
+
+    if ($stmt->execute()) {
+        // Registration successful - you might want to redirect to login or auto-login
+        $_SESSION['register_success'] = 'Registration successful! You can now log in.';
+        $_SESSION['active_form'] = 'login';
+    } else {
+        $_SESSION['register_error'] = 'Registration failed. Please try again.';
+        $_SESSION['active_form'] = 'register';
+    }
     header("Location: index.php");
     exit();
 }
@@ -64,14 +80,24 @@ if (isset($_POST['login'])) {
     $idnumber = $_POST['idnumber'];
     $password = $_POST['password'];
 
+    if (empty($idnumber) || empty($password)) {
+    $_SESSION['login_error'] = 'Please enter both ID number and password.';
+    $_SESSION['active_form'] = 'login';
+    header("Location: index.php");
+    exit();
+    }
+
     $result = $conn->query("SELECT * FROM users WHERE idnumber = '$idnumber'");
     if ($result->num_rows > 0){
         $user = $result->Fetch_assoc();
         if (password_verify($password, $user['password'])) {
+            // Set session variables
             $_SESSION['name'] = $user['name'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['idnumber'] = $user['idnumber'];
-            
+            $_SESSION['role'] = $user['role'];
+;
+            // Redirect based on role
             if ($user['role'] === 'admin') {
                 header("Location: admin_page.php");
             }else {
@@ -85,6 +111,4 @@ if (isset($_POST['login'])) {
     header("Location: index.php");
     exit();
 }
-
-
 ?>
