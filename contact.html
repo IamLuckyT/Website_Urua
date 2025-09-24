@@ -7,23 +7,25 @@
 </head>
 <body>
     <h1>Contact Us</h1>
-    <form>
+    <form action="process-form.php" method="post">
         <!--Area for the name in the form-->
         <label for="name">Name</label>
-        <input type="text" id="name">
-
+        <input type="text" id="name" name="name">
         <br>
+
         <!--Area for typing a message in the form-->
         <label for="message">Message</label>
-        <textarea id="message"></textarea>
+        <textarea id="message"></textarea name="message">
+        <br>
 
         <!--Area for selecting the type of priority in the form-->        
         <label for="priority">Priority</label>
-        <select id="priority">        
+        <select id="priority" name="priority">        
             <option value="1">Low</option>
             <option value="2" selected>Medium</option>
             <option value="3">High</option>
         </select>
+        <br>
 
         <!--Area for selecting the type of message in the form-->
         <fieldset>
@@ -38,10 +40,11 @@
                 Complaint
             </label>
         </fieldset>
+        <br>
 
         <!--Area for checkbox(Selecting and unselecting) in the form-->
         <label>
-            <input type="checkbox">
+            <input type="checkbox" name="terms">
                 I agree to the terms and conditions.
         </label>
         <br>
