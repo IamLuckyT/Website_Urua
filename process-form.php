@@ -10,7 +10,7 @@ if (! $terms){
 } 
 
 $host = "localhost";
-$dbname = "messages";
+$dbname = "messages_db";
 $user = "root";
 $password = "";
 
