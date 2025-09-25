@@ -1,20 +1,25 @@
 <?php
 
-session_start();
+session_start();                                                          // Start session to retrieve error messages and active form
 
+// Retrieve error messages and active form from session
 $errors = [
   'login' => $_SESSION['login_error'] ??'',
   'register' => $_SESSION['register_error'] ??''
 ];
 
-$activeForm = $_SESSION['active_form'] ?? 'login';
 
-session_unset();
+$activeForm = $_SESSION['active_form'] ?? 'login';                       // Default to login form if no active form is set
 
+
+session_unset();                                                         // Clear session variables after retrieving
+
+// Function to display error messages
 function showError($error) {
   return !empty($error) ? "<p class='error-message'>$error</p>" : '';
 }
 
+// Function to determine which form is active
 function isActiveForm($formName, $activeForm) {
   return $formName === $activeForm ? 'active' : '';
 }
